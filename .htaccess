@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Перенаправление всех запросов на index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Запрет доступа к папкам
+Options -Indexes
+
+# Запрет доступа к файлам .htaccess
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
